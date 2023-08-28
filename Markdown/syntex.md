@@ -18,6 +18,7 @@
   - [Code Blocks](#code-blocks)
   - [Syntax Highlighting for Multiple Languages](#syntax-highlighting-for-multiple-languages)
   - [Show Backticks](#show-backticks)
+- [Add Images](#add-images)
 
 ## Headings
 To create a heading, add number signs (#) in front of a word or phrase. And number of (#) will indecate heading level.
@@ -141,5 +142,9 @@ now you can see backticks
 ````
 `````
 
-## Line Break
+## Add Images
+You can add images to Markdown using the `[alt text](image_url)` syntax
+```
+![Image name in Text](https://image_link_url)
+```
 
