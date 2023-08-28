@@ -4,6 +4,7 @@ This repository is a collection of small and concise notes on things I've learne
 
 ## Timeline
 `2023/08/28`: Markdown syntax
+`2023/08/29`: Markdown syntax, Git
 
 
 
