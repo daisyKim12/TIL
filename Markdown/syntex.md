@@ -1,25 +1,29 @@
 # Markdown
 
 ## Table of Contents
-* Make Links
-* Format Cods
-
+- [Make Links](#make-links)
+  - [External Links](#external-links)
+  - [Internal Links](#internal-links)
+- [Format Codes](#format-codes)
+  - [Inline Code](#inline-code)
+  - [Code Blocks](#code-blocks)
+  - [Syntax Highlighting for Multiple Languages](#syntax-highlighting-for-multiple-languages)
+  - [Show Backticks](#show-backticks)
 
 
 ## Make Links
+
+### External Links
 Markdown syntax for a hyperlink is square brackets followed by parentheses. The square brackets hold the text, the parentheses hold the link.
 ```
 [Link text Here](https://link-url-here.org)
 ```
 
 ### Internal Links
-
-
-### External Links
-
-
-### Linking to an Internal Page Heading
-
+`Internal link`: Internal Link(or anchor link) directs user from one section of the webpage to another section within the same webpage. It is important to use `relative path` to the page to link into.
+```
+[Link text Here](/guides/content/editing-an-existing-page)
+```
 
 ## Format Codes
 
