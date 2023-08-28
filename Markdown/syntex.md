@@ -24,6 +24,9 @@ Markdown syntax for a hyperlink is square brackets followed by parentheses. The 
 ```
 [Link text Here](/guides/content/editing-an-existing-page)
 ```
+```
+[Make Links](#make-links)
+```
 
 ## Format Codes
 
