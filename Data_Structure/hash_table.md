@@ -1,4 +1,4 @@
-# Day 1: Hash table
+# Hash table
 
 
 ## What is Hash Table
