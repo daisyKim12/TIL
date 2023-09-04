@@ -1,6 +1,4 @@
-All About Using Git
-
-
+# All About Using Git
 
 
 ## Staging and Commit
@@ -48,7 +46,7 @@ git status
 * modified: After changing the file this message will show 'changes not staged for commit` and file will be marked as `modified`
 * staged: After using `git add` command this message will show 'changes to be commited` and file will be marked as `modified`
 
-## git with vscode
+## git push and commit with vscode
 First one must install git
 [install git](https://git-scm.com/download/win)
 
@@ -87,3 +85,7 @@ Push changes from VSC to Github
 6. Enter Commit Message: After staging the changes, you'll see a text box at the top of the Source Control panel. Enter a meaningful commit message describing the changes you made.
 7. Commit Changes:Click the checkmark icon (✓) in the text box or press Ctrl + Enter (or Cmd + Enter) to commit the changes. This records your changes locally.
 8. Push Changes to GitHub: After committing, you'll see an icon with an arrow pointing upward (↑) in the Source Control panel. Click on it to push your committed changes to GitHub. If prompted, log in to your GitHub account.
+
+## git pull with vscode
+`git pull` is a command used to update the current branch in your local repository with the latest changes from a remote repository. 
+It combines two operations: `git fetch`, which retrieves the latest changes from the remote repository, and `git merge`, which incorporates those changes into your local branch.
