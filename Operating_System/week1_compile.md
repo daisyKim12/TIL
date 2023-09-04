@@ -2,14 +2,38 @@
 Compile is to change text file that has a program code into binary file executable in a certain processor.
 
 ## GCC
-
+GCC is short for  GNU Compiler Collection which is a optimizing compiler produced by GNU Poject.
 
 **example**
 ```
+// make a executionable file named hello using hello.c 
 gcc -o hello hello.c
 ```
 
-**options**
+**gcc options**
+-gcc file_name.c: compile a file into execution file, with default name 'a'
+-gcc -c object_name file_name.c: Make object file.
+-gcc -o execution_name object_name: Make execution file using object file.
+
+-S: make .s file
+-c: make .o file
+-v: show how gcc compiles step by step
+
+**cpp options**
+x
+
+**cc1 options**
+x
+
+**as options**
+x
+
+**link options**
+-1: Set library name
+-L: Set library path
+-shared: Make shared library
+-fPIC: Used when making shared library. Make a object file suitable for making shared library
+
 
 ## Stage of compile
 1. Preprocessing: Done by Preprocessor(cpp), produces pure C-language program exchange dirctives.
