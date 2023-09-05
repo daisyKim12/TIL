@@ -1,6 +1,11 @@
 # JAVA basic
 
-## JVM
+## Introduction of JAVA
+- Java runs on JVM(Java Virtual Machine) which runs on top of Operating System so Java program runs independent of Operating System type.
+- Java is a OOP(Object-Oriented Programming) language. So every code and data is manage by object and class. And by interacting between objects implementing complicated logic. OOP language has lots of adventages.
+  - Easy reparing code.
+  - Can use OOP functions such as Inheritance, Class, Encapsulation, Polymorphism.
+- Manages memory autometically so there is no need to delete objects manually.
 
 ## How to install JDK(Java Development Kit) 17
 
