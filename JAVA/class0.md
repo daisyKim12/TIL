@@ -73,3 +73,46 @@ public class Dog {
     }
 }
 ```
+
+## Package
+A package in Java is used to group related classes. Think of it as a folder in a file directory. We use packages to avoid name conflicts, and to write a better maintainable code. Packages are divided into two categories.
+
+**import a package**
+```
+import package.name.Class;   // Import a single class
+import package.name.*;   // Import the whole package
+```
+
+```
+import java.util.Scanner;
+
+class MyClass {
+  public static void main(String[] args) {
+    Scanner myObj = new Scanner(System.in);
+    System.out.println("Enter username");
+
+    String userName = myObj.nextLine();
+    System.out.println("Username is: " + userName);
+  }
+}
+```
+
+**make user-define package**
+```
+package mypack;
+class MyPackageClass {
+  public static void main(String[] args) {
+    System.out.println("This is my package!");
+  }
+}
+```
+
+compile the package
+```
+C:\Users\Your Name>javac -d {destination to svae the package} MyPackageClass.java
+```
+
+run the class file inside a package
+```
+C:\Users\Your Name>java mypack.MyPackageClass
+```
