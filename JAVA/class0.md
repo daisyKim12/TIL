@@ -109,10 +109,32 @@ class MyPackageClass {
 
 compile the package
 ```
-C:\Users\Your Name>javac -d {destination to svae the package} MyPackageClass.java
+C:\Users\Your Name>javac -d {destination to save the package} MyPackageClass.java
 ```
 
 run the class file inside a package
 ```
 C:\Users\Your Name>java mypack.MyPackageClass
 ```
+
+## Access Level Modifier
+Access level modifier limits the accessablity of a changing and extracting value from an instance variable. And for instance method access level modifier limits the call of a method.
+
+**class level modifier**
+- public: Can make an instance from any class in any package.
+    1. Only one public class is allowed in a single source file.
+    2. The name of a public class must match with the name of the source file.
+- default: Can make a instance only from the same packagae.
+
+**variable level modifier**
+- public: Variable can me accessed from anywhere.
+- protected: Can be accessed by classes with inheritance relationship.
+- private: Private variable can me accessed in the same class.
+- default: Can be accessed from same package.
+
+**method level modifier**
+- public: Method can me called from anywhere.
+- protected: Can be called by classes with inheritance relationship.
+- private: Private method can me accessed in the same class.
+- default: Can be called from same package.
+
