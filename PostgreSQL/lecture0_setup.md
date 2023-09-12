@@ -70,3 +70,6 @@ __exit__
 ```
 exit
 ```
+
+## Set Datagrip
+Datagrip is a database IDE by JetBrains it provides development for OracleDB, MongoDB, MySQL, PostgrSQL.
