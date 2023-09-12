@@ -120,6 +120,9 @@ C:\Users\Your Name>java mypack.MyPackageClass
 ## Access Level Modifier
 Access level modifier limits the accessablity of a changing and extracting value from an instance variable. And for instance method access level modifier limits the call of a method.
 
+**level of protectablity**
+public > protected > default > private
+
 **class level modifier**
 - public: Can make an instance from any class in any package.
     1. Only one public class is allowed in a single source file.
