@@ -24,7 +24,7 @@ brew tap homebrew/core
 brew install postgresql
 ```
 
-5. Start PostgreSQL server
+5. Start PostgreSQL server in local 
 
 This command will start PostgreSQL as a background service, and it will automatically start every time you boot your Mac.
 
@@ -47,6 +47,12 @@ createdb -U daisy12 daisy12
 ```
 psql -U your-username -d your-database-name
 ```
+
+9. Stop PostgreSQL server in local
+```
+brew services stop postgresql
+```
+
 
 ## Use Docker to install PostgrSQL
 May be next time.
@@ -73,3 +79,24 @@ exit
 
 ## Set Datagrip
 Datagrip is a database IDE by JetBrains it provides development for OracleDB, MongoDB, MySQL, PostgrSQL.
+
+### Connect local
+1. In Dataase Explore find `+` sign and click.
+2. Data `source` > `PostgreSQL`
+3. In `General` type Host, Port, User, Password, Database
+    - Host: localhost for accessing local database
+    - Port: Usually 5432
+    - User: UserID of your pc
+    - Password: If needed add password
+    - Database: Initial database name
+
+
+### Connect school cluster
+1. In Dataase Explore find `+` sign and click.
+2. Data `source` > `PostgreSQL`
+3. In `SSH/SSL` check `Using SSH tunnel`
+4. Add SSH configuration no need for `Local Port`
+5. In `General` add User, Password
+    - User: db18312164
+    - PW: ...
+
