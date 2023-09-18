@@ -141,3 +141,40 @@ public > protected > default > private
 - private: Private method can me accessed in the same class.
 - default: Can be called from same package.
 
+## Static
+Static variable and static method is a member of class that is independent of the creation of instance.
+ 
+- Static variable: Static variable is a variable that every instance shares. So if you need a variable that has to me accessed by instances created by a same class it might be a good idea to use static variable.
+**define a static variable**
+```
+class A {
+  static int num = 0;
+}
+```
+**accessing static variable**
+```
+A a_instance = new A();
+a.num ++;
+A.num ++;
+```
+1. access by instance
+2. access by class name
+
+- Static method: Static method is a method that is independent from instance. Class only group these static method inside itself but has no hard control over them. These methods are not belongs to any object. And it cannot access or change instance variable but can access static variable.
+
+**define a static method**
+```
+class B {
+  static void showInt(int n) {
+    System.out.println(n);
+  }
+}
+```
+
+**calling static method**
+```
+B b = new B();
+b.showInt(1);
+B.showInt(2);
+```
+
