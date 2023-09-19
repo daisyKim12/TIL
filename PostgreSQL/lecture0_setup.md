@@ -100,3 +100,6 @@ Datagrip is a database IDE by JetBrains it provides development for OracleDB, Mo
     - User: db18312164
     - PW: ...
 
+![General](/X/Screenshot%202023-09-19%20at%2011.02.11%20PM.png)
+
+![SSH tunneling](/X/Screenshot%202023-09-19%20at%2011.02.44%20PM.png)
