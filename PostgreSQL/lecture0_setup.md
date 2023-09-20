@@ -1,7 +1,7 @@
 # Set PostgreSQL
 This file contains all about running PostgreSQL on macOS. Install PostgreSQL on local or on docker and then connects with datagrip.
 
-## Download local
+## Download Postgresql@13 in local
 1. Install Homebrew
 If you don't have Homebrew installed, it's a package manager for macOS that makes it easy to install various software, including PostgreSQL. Open Terminal and run the following command to install Homebrew:
 ```
@@ -28,29 +28,36 @@ brew install postgresql
 
 This command will start PostgreSQL as a background service, and it will automatically start every time you boot your Mac.
 
+__start postgres__
 ```
-brew services start postgresql
+brew services start postgresql@13
 ```
-
-Check PostgreSql status
+__check postgres status__
 ```
 brew services list
 ```
-
-6. Create a Database
-If you intended to connect to a specific database, you'll need to make sure that database exists. You can create a new database using the following SQL command from within 
+__stop postgres__
 ```
-createdb -U daisy12 daisy12
+brew services stop postgresql@13
 ```
 
-8. Connect to new Database
+## Enter postgresql database
+
+1. locate postgresql
 ```
-psql -U your-username -d your-database-name
+locate psql | grep /bin
+```
+```
+>/opt/homebrew/Cellar/postgresql@13/13.12/bin/psql
+```
+2. export path
+```
+export PATH=/opt/homebrew/Cellar/postgresql@13/13.12/bin:$PATH                           127 ✘  10:57:10  
 ```
 
-9. Stop PostgreSQL server in local
+3. Enter default database
 ```
-brew services stop postgresql
+psql postgres         
 ```
 
 
