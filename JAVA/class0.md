@@ -141,7 +141,7 @@ public > protected > default > private
 - private: Private method can me accessed in the same class.
 - default: Can be called from same package.
 
-## Static
+## Static Variable and Static Method
 Static variable and static method is a member of class that is independent of the creation of instance.
  
 - Static variable: Static variable is a variable that every instance shares. So if you need a variable that has to me accessed by instances created by a same class it might be a good idea to use static variable.
@@ -178,3 +178,13 @@ b.showInt(1);
 B.showInt(2);
 ```
 
+## Method Overloading
+Method overloading is a feature of Java in which a class has more than one method of the same name and their parameters are different.\
+
+```
+class MyHOme {
+  void mySimpleRoom(int n) { ... };
+  void mySimpleRoom(int n1, int n2) { ... };
+  void mysimpleRoom(double d1, double d2) { ... };
+}
+```
