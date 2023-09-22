@@ -1,7 +1,7 @@
 # Stack
 
 ## What is a Stack
-Stack is a linear data structure that follows a order called LIFO. LIFO is short for last-in-first-out, meaning element inside a Stack can be accessed from only one direction. Only a pointer that points the top element is accessable
+Stack is a linear data structure that follows a order called LIFO. LIFO is short for last-in-first-out, meaning element inside a Stack can be accessed from only one direction. Only a pointer that points the top element is accessable.
 
 ## Implementing a Stack in C
 There are various ways to implement a Stack.
@@ -19,6 +19,7 @@ Abstract Data type is define by object and function that specify the attribute o
 - Stack: A finite ordered list with zero or more element
 - Element: Item that populates a stack.
 - Max_Stack_Size: Positive integer that saves overall size of a stack.
+- Top: Pointer that points the top element.
   
 ```c
 #define Max_Stack_Size = 100;
