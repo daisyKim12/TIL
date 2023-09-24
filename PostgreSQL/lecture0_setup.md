@@ -52,7 +52,7 @@ locate psql | grep /bin
 ```
 2. export path
 ```
-export PATH=/opt/homebrew/Cellar/postgresql@13/13.12/bin:$PATH                           127 ✘  10:57:10  
+export PATH=/opt/homebrew/Cellar/postgresql@13/13.12/bin:$PATH
 ```
 
 3. Enter default database
