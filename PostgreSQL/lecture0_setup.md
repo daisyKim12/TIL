@@ -50,12 +50,14 @@ locate psql | grep /bin
 ```
 >/opt/homebrew/Cellar/postgresql@13/13.12/bin/psql
 ```
-2. export path
-```
-export PATH=/opt/homebrew/Cellar/postgresql@13/13.12/bin:$PATH
-```
+2. Open Zsh configuration file
+    `code ~/.zshrc`
+3. Add path
+    `export PATH=/opt/homebrew/Cellar/postgresql@13/13.12/bin:$PATH`
+4. apply change immediately
+    `source ~/.zshrc'
 
-3. Enter default database
+5. Enter default database
 ```
 psql postgres         
 ```

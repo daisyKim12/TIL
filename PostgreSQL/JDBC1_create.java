@@ -12,6 +12,7 @@ public class JDBC1_create {
         Statement stmt = JDBC_basic.createConnection("university", "daisy12", "dnjf1000");
         JDBC_basic.printStudent(stmt);
         //disConnection(conn, stmt);
+        JDBC_basic.addt3(stmt);
     }
     
 }
@@ -66,16 +67,16 @@ class JDBC_basic {
         return stmt;
     }
 
-    public static Statement disConnection(Connection conn, Statement stmt) {
+    // public static Statement disConnection(Connection conn, Statement stmt) {
     
-        try {
-            stmt.close();
-            conn.close();
+    //     try {
+    //         stmt.close();
+    //         conn.close();
 
-        } catch (SQLException sqle) {
-            System.out.println("SQLException : " + sqle);
-        }
-    }
+    //     } catch (SQLException sqle) {
+    //         System.out.println("SQLException : " + sqle);
+    //     }
+    // }
 
     public static void printStudent(Statement stmt) {
 
@@ -89,5 +90,17 @@ class JDBC_basic {
         } catch (SQLException sqle) {
             System.out.println("SQLException : " + sqle);
         }
+    }
+
+    public static void addt3(Statement stmt) {
+
+        try {
+            stmt.executeUpdate(
+                "create table t3 ( g int, h numeric(4,2) );"
+            );
+        } catch (SQLException sqle){
+            System.out.println("Could not insert tuple" + sqle);
+
+        };
     }
 }
