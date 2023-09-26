@@ -121,3 +121,6 @@ public class OverridingTest {
 ```
 
 **where does overriding is used**
+
+## protected
+
