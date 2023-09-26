@@ -1,0 +1,13 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug with LLDB",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/Data_Structure/assignment1/swap",
+            "MIMode": "lldb",
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}
