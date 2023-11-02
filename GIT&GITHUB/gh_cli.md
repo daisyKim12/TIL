@@ -64,6 +64,13 @@ git status
 git commit -m "Your commit message here"
 ```
 
+if you have to undo commit statement you can use `git reset` or `git reverse` command
+reset must be use more carefully as it can reset the commit history 
+```
+git reset HEAD~1
+git revert HEAD~1
+```
+
 **push**
 ```
 git push origin main
