@@ -37,6 +37,13 @@ gh repo create {repository-name} --public --clone --add-readme --description "re
 gh repo clone username/repository-name
 ```
 
+**deleting cloned repository**
+```
+cd <project_name>
+rm -rf <repository_folder>.git 
+
+rm -rf <folder_name>
+```
 
 ## Process of Commit
 
@@ -55,4 +62,20 @@ git status
 **commit changes with message**
 ```
 git commit -m "Your commit message here"
+```
+
+**push**
+```
+git push origin main
+```
+
+If there is a file with large object you need to track that file using git lfs
+
+```
+git lfs track "path/to/your/large/file.zip"
+
+git add .
+git commit -m "Add large file using Git LFS"
+git push origin main
+
 ```
