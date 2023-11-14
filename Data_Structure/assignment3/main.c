@@ -50,50 +50,49 @@ void getRandom(int* item_array, int n) {
     }
 }
 
+// Function to create a complete binary tree
 void create_complete_binary_tree(NODE* tree_head, int node_number, int* item_array) {
-
-    // TODO: fix the connection
-    
+    // Iterate through the given array of items to create nodes
     for (int i = 0; i < node_number; i++) {
+        // Create a new node and allocate memory for it
         NODE* current = (NODE*)malloc(sizeof(NODE));
         current->data = item_array[i];
         current->leftChild = NULL;
         current->rightChild = NULL;
 
+        // Add the newly created node to the queue
         AddQ(current);
     }
     
-   
-    // Print elements in the queue
+    // Print elements in the queue for debugging purposes
     printf("Elements in the queue: ");
     for (int j = front + 1; j <= rear; j++) {
         printf("%d ", tree_queue[j]->data);
     }
     printf("\n");
     
-    //extract head node
+    // Extract the head node from the queue
     tree_head->leftChild = tree_queue[0];
     tree_head->rightChild = tree_head;
 
-    //connect
-    for(int i = 0; i < node_number; i++){
+    // Connect the nodes to form a complete binary tree
+    for(int i = 0; i < node_number; i++) {
+        // Connect the left child if it exists
         if(2*i+1 < node_number) {
-            tree_queue[i]->leftChild = tree_queue[2*i +1];
+            tree_queue[i]->leftChild = tree_queue[2*i + 1];
         } else {
             tree_queue[i]->leftChild = NULL;
         }
 
+        // Connect the right child if it exists
         if(2*i+2 < node_number) {
-            tree_queue[i]->rightChild = tree_queue[2*i +2];
+            tree_queue[i]->rightChild = tree_queue[2*i + 2];
         } else {
             tree_queue[i]->rightChild = NULL;
         }
     }
-
-    for(int i = 0; i<node_number; i++){
-        DeleteQ();
-    }
 }
+
 
 // problem 2
 typedef struct _stack {
@@ -131,31 +130,34 @@ NODE* pop(STACK** top) {
     return popped_data;
 }
 
+// Function to perform iterative inorder traversal on a binary tree
 void inorder_traversal_iterative(NODE* tree_head, STACK** top) {
+    // Start with the leftmost node
     NODE* current = tree_head->leftChild;
 
-    while (current != NULL || !isEmpty(top)){
+    // Continue traversal until the current node is NULL and the stack is empty
+    while (current != NULL || !isEmpty(top)) {
+        // Traverse all the way to the leftmost node in the current subtree
         while (current != NULL) {
+            // Push each node encountered on the way to the left onto the stack
             push(top, current);
             current = current->leftChild;
         }
 
+        // Pop the top node from the stack (current subtree's leftmost node)
         current = pop(top);
-        printf("%d ", current->data);
-        current = current->rightChild;
-    } 
 
+        // Print the data of the popped node (inorder traversal)
+        printf("%d ", current->data);
+
+        // Move to the right child of the popped node
+        current = current->rightChild;
+    }
+
+    // Print a newline character to separate the output for readability
     printf("\n");
 }
 
-// void printInOrder(NODE* root) {
-//     if (root != NULL) {
-//         printInOrder(root->leftChild);
-//         printf("%d ", root->data);
-//         printInOrder(root->rightChild);
-//     }
-//     printf("\n");
-// }
 
 //problem 3
 typedef struct _threadedTtree {
@@ -166,81 +168,140 @@ typedef struct _threadedTtree {
     short int rightThread;
 } THREADEDTTREE;
 
-void binary_to_threaded(NODE* tree_head, STACK** top, THREADEDTTREE* threaded_tree_head, STACK** top_t) {
+void printInOrder(NODE* root) {
+    if (root != NULL) {
+        printInOrder(root->leftChild);
+        printf("%d ", root->data);
+        printInOrder(root->rightChild);
+    }
+    printf("\n");
+}
 
-    threaded_tree_head->leftThread = false;
-    threaded_tree_head->leftChild = tree_head->leftChild;
-    threaded_tree_head->data = NULL;
-    threaded_tree_head->rightChild = tree_head->rightChild;
-    threaded_tree_head->rightThread = false;
+void binary_to_threaded(NODE* tree_head, STACK** top, THREADEDTTREE** threaded_tree_head, STACK** top_t) {
+    // Initialize the threaded tree
+    *threaded_tree_head = (THREADEDTTREE*)malloc(sizeof(THREADEDTTREE));
+    (*threaded_tree_head)->leftChild = NULL;
+    (*threaded_tree_head)->rightChild = *threaded_tree_head;
+    (*threaded_tree_head)->leftThread = false;
+    (*threaded_tree_head)->rightThread = false;
 
+    // Initialize current node pointers for the original and threaded trees
     NODE* current = tree_head->leftChild;
-    THREADEDTTREE* prev = NULL;
+    THREADEDTTREE* current_t = *threaded_tree_head;
 
+    // Temporary array to store nodes and threaded tree nodes during traversal
+    int top_temp = 0;
+    THREADEDTTREE* STACK_temp[max_queue_size];
+
+    // Traverse the original binary tree and create the corresponding threaded tree
     while (current != NULL || !isEmpty(top)) {
+        // Traverse the left subtree and create threaded nodes
         while (current != NULL) {
-            // Create a new threaded tree node
-            THREADEDTTREE* threadedNode = (THREADEDTTREE*)malloc(sizeof(THREADEDTTREE));
-            threadedNode->data = current->data;
-            threadedNode->leftThread = 0; // Not a thread
-            threadedNode->rightThread = 0; // Not a thread
+            THREADEDTTREE* temp = (THREADEDTTREE*)malloc(sizeof(THREADEDTTREE));
+            temp->leftChild = NULL;
+            temp->rightChild = NULL;
+            temp->data = current->data;
+            temp->leftThread = false;
+            temp->rightThread = false;
 
-            // Connect the threaded tree nodes
-            if (*threaded_tree_head == NULL) {
-                *threaded_tree_head = threadedNode;
-            }
+            // Connect the threaded node to the threaded tree
+            current_t->leftChild = temp;
 
-            if (prev != NULL) {
-                if (prev->rightChild == NULL) {
-                    prev->rightChild = threadedNode;
-                    prev->rightThread = 1; // Thread
-                }
-            }
-
-            // Push the threaded tree node onto the stack
-            push(top_t, threadedNode);
-
-            // Push the current node onto the stack for later use
+            // Push the original node and threaded node onto the stacks
             push(top, current);
+            STACK_temp[top_temp++] = current_t;
 
             // Move to the left child
+            current_t = current_t->leftChild;
             current = current->leftChild;
         }
 
-        // Pop a node from the stack
+        // Pop the original node from the stack
         current = pop(top);
+
+        // Create a threaded node for the right child
+        THREADEDTTREE* temp = (THREADEDTTREE*)malloc(sizeof(THREADEDTTREE));
+        temp->leftChild = NULL;
+        temp->rightChild = NULL;
+        temp->data = current->data;
+        temp->leftThread = false;
+        temp->rightThread = false;
+        printf("%d ", temp->data);
+        
+        // Connect the right child of the threaded node
+        current_t = STACK_temp[--top_temp];
+        current_t->rightChild = temp;
 
         // Move to the right child
         current = current->rightChild;
     }
 
-    // Thread the rightmost node
-    THREADEDTTREE* rightmost = pop(top_t);
-    rightmost->rightChild = NULL;
-    rightmost->rightThread = 1; // Thread
+    // Reset the temporary variables for the second traversal
+    top_temp = 0;
+
+    // Connect right and left threads in the threaded tree
+    THREADEDTTREE* current_k = (*threaded_tree_head)->leftChild;
+    while (current_k != NULL || top_temp > 0) {
+        // Traverse the left subtree of the threaded tree
+        while (current_k != NULL) {
+            // Push the threaded node onto the stack
+            STACK_temp[top_temp++] = current_k;
+
+            // Move to the left child
+            current_k = current_k->leftChild;
+        }
+
+        // Pop the threaded node from the stack
+        current_k = STACK_temp[--top_temp];
+
+        // If the left child is NULL, connect the left thread
+        if (current_k->leftChild == NULL) {
+            current_k->leftChild = STACK_temp[--top_temp];
+            current_k->leftThread = true;
+        }
+
+        // Move to the right child
+        current_k = current_k->rightChild;
+    }
+
+    // Free dynamically allocated memory for threaded tree nodes
+    for (int i = 0; i < top_temp; ++i) {
+        free(STACK_temp[i]);
+    }
 
 }
 
-void inorder_traversal_Threaded(THREADEDTTREE* threaded_tree_head) {
-    THREADEDTTREE* current = threaded_tree_head->leftChild;
 
+// Function to perform inorder traversal on a threaded binary tree
+void inorder_traversal_Threaded(THREADEDTTREE* threaded_tree_head) {
+    // Start with the leftmost threaded node
+    THREADEDTTREE* current = threaded_tree_head;
+
+    // Traverse the threaded binary tree using the threaded links
     while (current != NULL) {
+        // Move to the leftmost threaded node in the current subtree
         while (current->leftThread == false) {
             current = current->leftChild;
         }
 
+        // Print the data of the threaded node
         printf("%d ", current->data);
 
+        // Move to the right threaded node (if available)
         while (current->rightThread == true) {
             current = current->rightChild;
             printf("%d ", current->data);
         }
 
+        // Move to the right child (actual child, not threaded) of the threaded node
         current = current->rightChild;
     }
 
+    // Print a newline character to separate the output for readability
     printf("\n");
 }
+
+
 
 int main(void) {
     /*
@@ -248,12 +309,13 @@ int main(void) {
     */
 
     int tree_n;
+    printf("<Problem1>\n");
     printf("Enter the number of nodes : ");
     scanf("%d",&tree_n);
 
     /* generate integer data by random number generation */
     int* item_array = (int*)malloc(tree_n * sizeof(int));
-    printf("\nGenerating data\n");
+    printf("\nGenerating data...\n");
     srand(SEED); //initialize random number generator
     getRandom(item_array, tree_n);
 
@@ -262,15 +324,16 @@ int main(void) {
     tree_head -> data = item_array[0];
     tree_head -> leftChild = NULL;
     tree_head -> rightChild = NULL;
-
+    
+    printf("Creating complete binary tree...\n");
     create_complete_binary_tree(tree_head, tree_n, item_array);
-
-    //test
-    //printInOrder(tree_head);
 
     /*
     * 2. inorder traversal using stack
     */
+
+    printf("<Problem2>\n");
+    printf("Inorder Traversal\n");
 
     STACK* top = NULL;
     inorder_traversal_iterative(tree_head, &top);
@@ -278,15 +341,20 @@ int main(void) {
     /*
     * 3. threaded binary tree
     */
-   
+
+    printf("<Problem3>\n");
     top = NULL;
     THREADEDTTREE* threaded_tree_head;
 
     STACK* top_t = NULL;
-    binary_to_threaded(tree_head, &top, threaded_tree_head, &top_t);
+    binary_to_threaded(tree_head, &top, &threaded_tree_head, &top_t);
     inorder_traversal_Threaded(threaded_tree_head);
 
     free(item_array);
+
+    // Free allocated memory
+    free(item_array);
+
 
     return 0;
 }
