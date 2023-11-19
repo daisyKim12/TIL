@@ -21,10 +21,6 @@ static int adjacency_matrix[10][10] = {
     {-1, -1, -1, -1, -1, -1, -1, 1, -1, -1},
 };
 
-#define MIN2(x,y) ((x) < (y) ? (x) : (y))
-static int dfn[10] = {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
-static int low[10] = {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
-static int num;
 
 // void dfnlow(int u, int v, int** graph) {
 //     linked_adja* ptr;
@@ -42,6 +38,11 @@ static int num;
 //         }
 //     }
 // }
+
+#define MIN2(x,y) ((x) < (y) ? (x) : (y))
+static int dfn[10] = {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
+static int low[10] = {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
+static int num;
 
 void dfnlow(int u, int v) {
     int w;
