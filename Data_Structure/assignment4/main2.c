@@ -103,15 +103,15 @@ int main(void) {
         printf("end\n");
     }
 
-
-    // Call dfnlow for each vertex
-    for (int i = 0; i < v_num; i++) {
-        if (dfn[i] < 0) {
-            dfnlow(i, -1);
-        }
-    }
     
-    //dfnlow(3, 4, graph_array);
+    dfnlow(3, 4);
     
     return 0;
 }
+
+    // Call dfnlow for each vertex
+    // for (int i = 0; i < v_num; i++) {
+    //     if (dfn[i] < 0) {
+    //         dfnlow(i, -1);
+    //     }
+    // }
